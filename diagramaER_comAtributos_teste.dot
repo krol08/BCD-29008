@@ -15,7 +15,7 @@ graph diagramaER{
 	semestre_corrente [shape = plaintext]
 	turno [shape = plaintext]
 
-	//relacionamento
+	//relacionamentos
 	cursou [shape=diamond]
 	faz [shape=diamond]
 	interesse [shape=diamond]
@@ -25,7 +25,7 @@ graph diagramaER{
 	grade [shape=diamond]
 	leciona [shape=diamond]
 
-	//ligação
+	//ligações
 	aluno -- cursou -- disciplina
 	aluno -- faz -- processo_de_matrícula
 	aluno -- estuda -- curso
