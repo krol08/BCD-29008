@@ -1,0 +1,30 @@
+graph diagramaER {
+ 	layout = neato
+	//Entidades
+	Aluno [shape = record]
+	Processo_de_Matrícula [shape = record]
+	Disciplina [shape = record]
+	Horário [shape = record]
+	Professor [shape = record]
+	Curso [shape = record]
+	//relacionemetno
+	Cursou [shape = diamond]
+	Faz [shape = diamond]
+	Interesse [shape = diamond]
+	Pré_Requisitos [shape = diamond]
+	Lenciona [shape = diamond]
+	Calendário [shape = diamond]
+	Estuda [shape = diamond]
+	Grade [shape = diamond]
+	//ligação
+	Aluno -- Faz -- Processo_de_Matrícula 
+	Processo_de_Matrícula -- Interesse -- Disciplina
+	Disciplina -- Grade -- Curso 
+	Curso -- Estuda -- Aluno
+	Aluno -- Cursou -- Disciplina
+	Disciplina -- Lenciona -- Professor
+	Disciplina -- Pré_Requisitos -- Disciplina
+	Disciplina-- Calendário -- Horário
+
+
+}
