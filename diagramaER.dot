@@ -1,6 +1,6 @@
 graph diagramaER{
 
-	//entidades
+	//Entidades
 	aluno [shape = record]
 	disciplina [shape = record]
 	processo_de_matrícula [shape = record]
