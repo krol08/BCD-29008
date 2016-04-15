@@ -1,0 +1,44 @@
+graph diagramaER{
+
+	//entidades
+	aluno [shape = record]
+	disciplina [shape = record]
+	processo_de_matrícula [shape = record]
+	horários [shape = record]
+	professor [shape = record]
+	curso [shape = record]
+
+	//atributos
+	matrícula [shape = plaintext]
+	nome [shape = plaintext]
+	carga_horária [shape = plaintext]
+	semestre_corrente [shape = plaintext]
+	turno [shape = plaintext]
+
+	//relacionamento
+	cursou [shape=diamond]
+	faz [shape=diamond]
+	interesse [shape=diamond]
+	estuda [shape=diamond]
+	pré_requisito [shape=diamond]
+	calendário [shape=diamond]
+	grade [shape=diamond]
+	leciona [shape=diamond]
+
+	//ligação
+	aluno -- cursou -- disciplina
+	aluno -- faz -- processo_de_matrícula
+	aluno -- estuda -- curso
+	processo_de_matrícula -- interesse -- disciplina
+	disciplina -- pré_requisito -- disciplina
+	disciplina -- calendário -- horários
+	disciplina -- grade -- curso
+	disciplina -- leciona -- professor
+	aluno -- matrícula
+	aluno -- nome
+	processo_de_matrícula -- semestre_corrente
+	disciplina -- carga_horária 
+	horários -- turno
+	
+
+}
