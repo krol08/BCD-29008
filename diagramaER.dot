@@ -1,5 +1,5 @@
 graph diagramaER{
-
+	//dot -Tpng diagramaER.dot -o diagramaER.png
 	//Entidades
 	aluno [shape = record]
 	disciplina [shape = record]
@@ -19,12 +19,20 @@ graph diagramaER{
 	leciona [shape=diamond]
 
 	//ligações
-	aluno -- cursou -- disciplina
-	aluno -- faz -- processo_de_matrícula
-	aluno -- estuda -- curso
-	processo_de_matrícula -- interesse -- disciplina
-	disciplina -- pré_requisito -- disciplina
-	disciplina -- calendário -- horários
-	disciplina -- grade -- curso
-	disciplina -- leciona -- professor
+	aluno	-- cursou  [label="0..N"]
+	cursou	-- disciplina [label="0..N"]
+	aluno	-- faz [label="1..1"]
+	faz		-- processo_de_matrícula[label="1..N"]
+	aluno -- estuda [label="0..N"]
+	estuda	-- curso [label="1..N"]
+	processo_de_matrícula -- interesse [label="0..N"]
+	interesse -- disciplina [label="1..N"]
+	disciplina -- pré_requisito [label="0..N"]
+	pré_requisito -- disciplina [label="0..N"]
+	disciplina -- calendário [label="0..N"]
+ 	calendário-- horários [label="0..N"]
+	disciplina -- grade [label="0..N"]
+	grade -- curso [label="0..1"]
+	disciplina -- leciona [label="0..N"]
+	leciona -- professor [label="1..N"]
 }
