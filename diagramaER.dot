@@ -31,7 +31,7 @@ graph diagramaER{
 	semanaAB  [shape = point]
 	nomeP [shape = point]
 	código [shape = point]
-	códigoC [shape = point]
+	código [shape = point]
 
 	aluno -- matrícula [label = "matrícula"] // identificador do aluno.
 	aluno -- nome [label = "nome"]
