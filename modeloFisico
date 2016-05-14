@@ -1,6 +1,8 @@
-#use u1220050261;
+#use db1220050261;
 
 # Tem que apagar no sentido inverso.
+drop table if exists processoDeMatricula;
+drop table if exists matricula;
 drop table if exists horario;
 drop table if exists preRequisito;
 drop table if exists disciplina;
@@ -66,6 +68,31 @@ create table horario (
 	numDia tinyint unsigned,
 	semanaAB tinyint unsigned,
 	codigoDisciplina char(4),
-	semestre smallint unsigned #,
-	#constraint fk_horario_codigoDisciplina_disciplina_codigo foreign key (preRequisito) references disciplina(codigo)
+	semestre smallint unsigned,
+	constraint fk_horario_codigoDisciplina_disciplina_codigo foreign key (codigoDisciplina) references disciplina(codigo)
+);
+
+# matricula(***aluno, ***curso, *matricula)
+# aluno referencia aluno(cpf)
+# curso referencia curso(codigo)
+create table matricula(
+	id smallint unsigned auto_increment primary key,
+	aluno bigint unsigned,
+	curso smallint unsigned,
+	matricula int unsigned,
+	constraint fk_matricula_aluno_aluno_cpf foreign key (aluno) references aluno(cpf),
+	constraint fk_matricula_curso_curso_codigo foreign key (curso) references curso(codigo)
+);
+
+# processoDeMatricula(***matricula, ***disciplina, concluido, semestre)
+# matricula referencia matricula(aluno, curso)
+# disciplina referencia disciplina(codigo)
+create table processoDeMatricula(
+	id smallint unsigned auto_increment primary key,
+	matricula smallint unsigned,
+	disciplina char(4),
+	concluido tinyint unsigned,
+	semestre smallint unsigned,
+	constraint fk_processoDeMatricula_matricula_matricula_id foreign key (matricula) references matricula(id),
+	constraint fk_processoDeMatricula_disciplina_disciplina_codigo foreign key (disciplina) references disciplina(codigo)
 );
