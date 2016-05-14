@@ -12,8 +12,8 @@ Professor (*siape, nome)
 Aluno (*cpf, nome)
 
 Processo_de_Matrícula (***matricula, ***disciplina, concluído, semestre)
-aluno referência aluno(cpf)
-disciplina referência disciplina(código)
+matricula referencia matricula(aluno, curso)
+disciplina referencia disciplina(óodigo)
 
 matrícula(***aluno, ***curso, matrícula)
 aluno referência aluno(cpf)
