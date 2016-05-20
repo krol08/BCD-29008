@@ -1,0 +1,371 @@
+use db1220050261;
+
+desc aluno;
+insert into  aluno(cpf, nome)
+values
+	('1', 'Ana'),
+	('2', 'Leonan'),
+	('3', 'Karoline'),
+	('4', 'Beatriz'),
+	('5', 'Murilo');
+select * from aluno;
+# Retorna um subconjunto de colunas que possuem cpf = 1.
+select * from aluno where cpf = '1';
+# Forma de comparar um único valor e não um subconjunto.
+select nome from aluno where cpf = '1';  
+
+
+
+desc professor;
+insert into professor(siape, nome)
+	values  ('1','Ederson Torresini'),('2','Volnei Velleda Rodrigues'),('3','Arliones Hoeller'),('4','Bruno Fontana da Silva'),('5','Mario de Noronha Neto'),
+			('6','Silviana Cirino'),('7','Pedro Armando da Silva Júnior'),('8','João Carlos Bez Batti'),('9','Marcelo Schappo'),('10','Ramon Mayor Martins'),
+			('11','Volney Duarte Gomes'),('12','Jesue Graciliano da Silva'),('13','Maria de Souza'),('14','Rodrigo Sergio Tied'),('15','Madeline Correa'),
+			('16','Deise Juliana Mazera'),('17','Volney Gomes'),('18','Jaison Gasperi'),('19','Cleber Jorge Amaral'),('20','Marcelo Maia Sobral'),
+			('21','Clayrton Monteiro Henrique'),('22','Eder da Silva e Sá'),('23','Luciano Barreto'),('24','Jorge Henrique Busatto Casagrande'),('25','Humberto Oliveira'),
+			('26','Vidomar Silva Filho'),('27','Deise Monquelate Arndt'),('28','Emerson Ribeiro de Mello'),('29','Elen Macedo Lobato'),('30',''),
+			('31','Eraldo Silveira e Silva'),('32','Francisco de Assis Souza dos Santos'),('33','Marcos Moecke'),('34','Odilson Tadeu Valle'),('35','Alexandre Moreira'),
+			('36','Roberto Wanderley da Nóbrega'),('37','Saul Silva Caetano'),('38','Tiago Semprebom'),('39','André Luiz Alves'),('40','Ademar Evandro Rosa'),
+			('41','Diego da Silva de Medeiros'),('42','Fábio Alexandre de Souza'),('43','Fernando Bruinjé Cosentino'),('44','Marcio Henrique Doniak'),('45','Maria Claudia de Almeida Castro'),
+			('46','Nilton Francisco Oliveira da Silva'),('47','Norberto Baú'),('48','Roberto de Matos'),('49','Rubem Toledo Bergamo'),('50','Sandro Carlos Lima'),
+			('51','Tulio Alberton Ribeiro'),('52','Pedro Paulo Corrêa de Souza'),('53','Ana Paula Rosa Negri'),('54','Alexandre Sardá Vieira'),('55','Alexandro Andrade'),
+			('56','Samuel Luna de Abreu'),('57','Alexandre Augusto Biz'),('58','Ana Paula Pruner'),('59','Anastácio  da Silva Junior'),('60','André Coelho da Silva'),
+			('61','Antonio Galdino da Costa'),('62','Carlos Boabais Neto'),('63','Cleber Arsego'),('64','Bruno Willian Wisintainer'),('65','Daina Colombo Figueredo'),
+			('66','Daniela'),('67','Eduardo Mayer'),('68','Elenira Vilela'),('69','Elisete Ferreira'),('70','Evanaska Maria Barbosa Nogueira'),
+			('71','Felipe Silveira de Souza'),('72','Fernando G. Bitencourt'),('73','Fernando Santos'),('74','Flávia Maia Moreira'),('75','Franciele Drews de Souza'),
+			('76','Franco Andrey S. de Souza'),('77','Gabriel Souza'),('78','George H. Wojcikiewicz'),('79','Gilson Jandir de Souza'),('80','Giselia Antunes Pereira'),
+			('81','Gustavo Gaciba'),('82','João Gonçalves'),('83','João Guilherme'),('84','Joaquim Manoel Golçaves'),('85','Joce Mary Mello Giotto'),
+			('86','Joice Nunes Bianchin'),('87','Juliano Souza'),('88','Julie Cristiane T. Davet'),('89','Karine Pereira Gossa'),('90','Lucia Muller'),
+			('91','Marcos Antônio Leite'),('92','Maria Lúcia Cidade de Souza'),('93','Maria Teresa Collares'),('94','Marilene Vilhhena de Oliveira'),('95','Paulo Henrique Oliveira de Amorin'),
+			('96','Luís Henrique Callegaro'),('97','Manoel Sebastian Rebollo Couto'),('98','Marcelo Eduardo de Oliveira'),('99','Marcílio Lourenço da Cunha'),('100','Mácio Eli Osório'),
+			('101','Luís Henrique Callegaro'),('102','Manoel Sebastian Rebollo Couto'),('103','Marcelo Eduardo de Oliveira'),('104','Marcílio Lourenço da Cunha'),('105','Mácio Eli Osório'),
+			('106','Pedro Paulo C. de Souza'),('107','Rogério Vilain'),('108','Rosane Maria Bolzan'),('109','Salet Valer'),('110','Sérgio Pereira da Rocha'),
+			('111','Silmara Sonaglio'),('112','Sueli Costa'),('113','Susan Thiessen'),('114','Talles Viana Demos'),('115','Tânia Regina Ferreia'),
+			('116','Vinicius Jacques'),('117','Viviane Davila Heidenreich'),('118','Volmir Von Dentz');
+
+select * from professor;
+# Retorna todos com 'e' na palavra;
+select * from professor where nome regexp 'E';
+# Retorna todos com 'e' no ínicio da palavra;
+select * from professor where nome like 'E%';
+
+
+desc curso;
+insert into curso(codigo, nome)
+values ('290', 'Engenharia de Telecomunicações');
+select * from curso;
+
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('DES', '1', '36', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'12'
+);
+
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('CAL1', '1', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'8'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('ELI1', '1', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'7'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('FSC1', '1', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'9'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('GAL', '1', '54', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'6'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('LOG', '1', '36', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'2'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('PJI1', '1', '54', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'29'
+);
+
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('QMC1', '1', '54', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+#################Falta professor###################################################################
+
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('CAL2', '2', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('CIE1', '2', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('FSC2', '2', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('ALG', '2', '54', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('PRG1', '2', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('QMC2', '3', '36', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('CAL3', '3', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('CIE2', '3', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('ELA1', '3', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('CIL', '3', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('PRG2', '3', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('MEC', '4', '36', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('CAL4', '4', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('RED1', '4', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('ELA2', '4', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('MIC', '4', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('POO', '4', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('MPQ', '5', '36', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('EST', '5', '54', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('RED2', '5', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('FSC3', '5', '90', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('SOP', '5', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('SIS1', '5', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('FEN', '6', '36', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('PRE', '6', '54', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('ANT', '6', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('STD', '6', '54', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('DLP1', '6', '90', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('SIS2', '6', '54', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('PJI2', '6', '36', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('PTG', '7', '36', '1980', (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('RTX', '7', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('MTG', '7', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('DLP2', '7', '54', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('PSD', '7', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('COM1', '7', '90', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('ADM', '8', '36', '1980', (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('CSF', '8', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('BCD', '8', '54', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('STE', '8', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('PTC', '8', '54', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('COM2', '8', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('PJI3', '8', '36', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('ECO', '9', '36', '1980', (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('SUS', '9', '36', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('SMU', '9', '54', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('ADS', '9', '54', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('STC', '9', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('CRF', '9', '72', NULL, (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('TCC1', '9', '36', '2160', (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('TCC1', '9', '36', '2160', (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('EST', '10', '360', '2160', (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+insert into disciplina(codigo,fase, CH, CHminima, cursoCodigo, professorSiape)
+values ('TCC2', '10', '108', '2560', (select codigo from curso where nome = 'Engenharia de Telecomunicações'), 
+		'16'
+);
+
+select * from disciplina;
